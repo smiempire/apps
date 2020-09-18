@@ -1,0 +1,54 @@
+div.form-actions {
+    background-color: inherit;
+    border: none;
+    margin-top: 0;
+    padding: 0;
+}
+
+.thumbnails > li {
+    margin-left: 0;
+}
+
+.usercard-image {
+    width: 64px;
+}
+
+.usercard-info {
+    margin-left: 70px;
+}
+
+.usercard-title {
+    margin: 0 0 10px 0;
+}
+
+.usercard-login-btn {
+    vertical-align: middle;
+}
+
+input[type="password"], input[type="text"], input[type="tel"], #submit-id-submit, #submit-resend-code {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 40px;
+    font-size: 14px;
+}
+
+#submit-id-submit, #submit-resend-code {
+    height: 45px;
+    font-size: 16px;
+}
+
+#submit-resend-code span {
+    vertical-align: sub;
+}
+
+.asteriskField {
+    display: none;
+}
+
+.control-label {
+    font-weight: bold;
+}

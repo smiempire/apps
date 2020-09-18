@@ -1,0 +1,12 @@
+{% extends 'authentication/form.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Вход{% endblock %}
+{% block content %}
+    {% crispy form %}
+    <p>
+        <a href="{% url signin_by_sms %}?{% include 'authentication/query_string.html' %}">Забыли пароль?</a>
+        <br/><br/>
+        <a href="{% url signup %}?{% include 'authentication/query_string.html' %}">Регистрация</a>
+    </p>
+{% endblock %}

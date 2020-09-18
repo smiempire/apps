@@ -1,0 +1,14 @@
+{% extends 'authentication/form.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if verifier_is_sent %}
+        <p>Ранее на номер <a href="/auth/signin/?{{ query_string }}">{{ phone }}</a> уже был выслан код</p>
+    {% else %}
+        <p>На номер <a href="/auth/signin/?{{ query_string }}">{{ phone }}</a> выслан код</p>
+    {% endif %}
+    <p><a id="submit-resend-code" class="btn btn-primary"
+       href="../resend_verifier/?{% include 'authentication/query_string.html' %}"><span>Отправить заново</span></a></p>
+    {% crispy form %}
+    <p>Нажимая «Готово», Вы принимаете <a href="/auth/terms_of_use/{{ uid }}/?{{ query_string }}">условия использования сервиса</a></p>
+{% endblock %}

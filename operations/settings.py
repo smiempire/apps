@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+from django.conf import settings
+
+# in milliseconds
+DEFAULT_OPERATION_EXPIRATION_PERIOD = 3 * 24 * 60 * 60 * 1000  # 72 часа
+OPERATION_EXPIRATION_PERIOD = getattr(settings, 'OPERATION_EXPIRATION_PERIOD', DEFAULT_OPERATION_EXPIRATION_PERIOD)
+
+DEFAULT_ROTATE_ORDERS_LOCK_NAME = 'orders.rotate_orders'
+ROTATE_ORDERS_LOCK_NAME = getattr(settings, 'ROTATE_ORDERS_LOCK_NAME', DEFAULT_ROTATE_ORDERS_LOCK_NAME)

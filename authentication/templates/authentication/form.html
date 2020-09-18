@@ -1,0 +1,10 @@
+{% extends 'form.html' %}
+{% load static %}
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "authentication/styles.css" %}"/>
+{% endblock styles %}
+
+{% block navbar-wrapper %}{% endblock %}
+
+{% block footer-wrapper %}{% endblock %}

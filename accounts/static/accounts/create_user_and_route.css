@@ -1,0 +1,36 @@
+.span4 {
+    margin: 0 !important;
+    width: 100% !important;
+}
+#form-table, #parsing-table {
+    width: 100%;
+}
+#form-table h4, #submit-button {
+    margin-top: 30px;
+}
+.error {
+    color: #a20d27;
+}
+.success {
+    color: #003399;
+}
+#submit-button {
+    width: 220px;
+}
+.controls input, #time_range {
+    width: 80px;
+}
+
+#id_post_url {
+    width: 500px;
+}
+
+#id_post_text {
+    width: 500px;
+    height: 150px;
+}
+
+#parsing_button {
+    margin-bottom: 10px;
+    margin-left: 5px;
+}

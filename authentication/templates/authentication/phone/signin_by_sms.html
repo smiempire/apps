@@ -1,0 +1,7 @@
+{% extends 'authentication/form.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% crispy form %}
+    <p><a href="/auth/spam/?{{ query_string }}">Мы тоже не любим спам</a></p>
+{% endblock %}

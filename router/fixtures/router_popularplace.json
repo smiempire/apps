@@ -1,0 +1,192 @@
+[
+    {
+        "pk": 1,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "Красная площадь, 3",
+            "address": "Москва, Красная площадь, 3",
+            "latitude": 55.754674,
+            "longitude": 37.621543,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Москва",
+            "street": "Красная площадь",
+            "house": "3",
+            "porch": "",
+            "description": "Столица нашей Родины"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "Миллионная улица, 39",
+            "address": "Санкт-Петербург, Миллионная улица, 39",
+            "latitude": 59.939631,
+            "longitude": 30.314368,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Санкт-Петербург",
+            "street": "Миллионная улица",
+            "house": "39",
+            "porch": "",
+            "description": "Это Питер, детка!"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "проспект Мира, 110",
+            "address": "Красноярск, проспект Мира, 110",
+            "latitude": 56.01163,
+            "longitude": 92.852446,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Красноярск",
+            "street": "проспект Мира",
+            "house": "110",
+            "porch": "",
+            "description": "Малая родина этого сервиса"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "Тарская улица, 4",
+            "address": "Омск, Тарская улица, 4",
+            "latitude": 54.989626,
+            "longitude": 73.36902,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Омск",
+            "street": "Тарская улица",
+            "house": "4",
+            "porch": "",
+            "description": "Город колец"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "Красный проспект, 27",
+            "address": "Новосибирск, Красный проспект, 27",
+            "latitude": 55.030204,
+            "longitude": 82.918902,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Новосибирск",
+            "street": "Красный проспект",
+            "house": "27",
+            "porch": "",
+            "description": "Где-то в Западной Сибири"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "улица Баумана, 20",
+            "address": "Республика Татарстан, Казань, улица Баумана, 20",
+            "latitude": 55.794937,
+            "longitude": 49.106657,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Казань",
+            "street": "улица Баумана",
+            "house": "20",
+            "porch": "",
+            "description": "Место встречи двух культур"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "проспект Сююмбике, 26",
+            "address": "Республика Татарстан, Набережные Челны, проспект Сююмбике, 26",
+            "latitude": 55.744029,
+            "longitude": 52.397329,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Набережные Челны",
+            "street": "проспект Сююмбике",
+            "house": "26",
+            "porch": "",
+            "description": "Город комплексов и ИТ-Парка"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "Нижегородский Кремль, 6а",
+            "address": "Нижний Новгород, Нижегородский Кремль, 6а",
+            "latitude": 56.327056,
+            "longitude": 44.005717,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Нижний Новгород",
+            "street": "Нижегородский Кремль",
+            "house": "6а",
+            "porch": "",
+            "description": "Между Окой и Волгой"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "улица Ленина, 44",
+            "address": "Краснодар, Центральный микрорайон, улица Ленина, 44",
+            "latitude": 45.023577,
+            "longitude": 38.970651,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Краснодар",
+            "street": "улица Ленина",
+            "house": "44",
+            "porch": "",
+            "description": "Там где тепло и яблоки растут"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "router.popularplace",
+        "fields":{
+            "name": "улица Ленина, 16",
+            "address": "Иркутск, улица Ленина, 16",
+            "latitude": 52.286211,
+            "longitude": 104.279987,
+            "postal_code": "",
+            "country": "",
+            "adm_area_level_1": "",
+            "adm_area_level_2": "",
+            "locality": "Иркутск",
+            "street": "улица Ленина",
+            "house": "16",
+            "porch": "",
+            "description": "Тут мог быть и Ваш город!"
+        }
+    }
+]

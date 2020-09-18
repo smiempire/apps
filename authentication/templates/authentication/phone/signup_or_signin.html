@@ -1,0 +1,33 @@
+{% extends 'authentication/form.html' %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+
+{% block title %}Уже есть аккаунт?{% endblock %}
+{% block content %}
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Мы обнаружили пользователя похожего на вас.
+        Возможно вы уже зарегистрированы?
+        <br/>Если так, то нажмите кнопку <b>Это я</b>,
+        иначе выберите <b>Продолжить регистрацию</b>.
+    </div>
+    <ul class="thumbnails">
+        {% for user in users %}
+            <li class="span12 clearfix">
+                <div class="thumbnail clearfix">
+                    {% thumbnail user.userprofile.get_image_url "64x64" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ user.userprofile }}" class="usercard-image pull-left">
+                    {% endthumbnail %}
+                    <div class="usercard-info">
+                        <a href="{% url signin_by_phone %}?phone={{ object.data.phone|urlencode }}&{% include 'authentication/query_string.html' %}" class="btn btn-primary pull-right usercard-login-btn">Это я!</a>
+                        <h4 class="usercard-title">{{ user.userprofile|truncatechars:20 }}</h4>
+                        <small><b>Зарегистрирован:</b> {{ user.date_joined|date:"SHORT_DATETIME_FORMAT" }}</small>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{% url signup_by_phone_get_verifier uid=object.uid %}?{% include 'authentication/query_string.html' %}" class="btn btn-primary span12">Продолжить регистрацию</a>
+    </div>
+{% endblock %}

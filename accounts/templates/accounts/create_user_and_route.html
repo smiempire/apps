@@ -1,0 +1,244 @@
+{% extends 'form.html' %}
+
+{% load static %}
+
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "accounts/create_user_and_route.css" %}"/>
+{% endblock styles %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static "accounts/create_user_and_route.js" %}"></script>
+{% endblock scripts %}
+
+{% block content %}
+    {% block notifications %}
+        {% if is_created %}
+            <h3 class="success">Маршрут создан успешно</h3>
+            <p>Ссылка на маршрут: <a href="http://{{ short_link }}">{{ short_link }}</a></p>
+        {% endif %}
+        {% if form.errors %}
+            <h3 class="error">Ошибка</h3>
+            <div id="form-error">
+                {{ form.non_field_errors }}
+                <ul>
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <li>{{ field.label }} – {{ field.errors|striptags }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endblock notifications %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table id="form-table">
+            <tr>
+                <td>{{ form.post_url.label }}</td>
+                <td>
+                    {{ form.post_url }}
+                    <input type="button" id="parsing_button" onclick="parseRoute()" value="Распарсить">
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.post_text.label }}</td>
+                <td>{{ form.post_text }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><h4>Пользователь</h4><hr></td>
+            </tr>
+            <tr>
+                <td>{{ form.user_first_name.label }}</td>
+                <td>{{ form.user_first_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.user_last_name.label }}</td>
+                <td>{{ form.user_last_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.user_sex.label }}</td>
+                <td>{{ form.user_sex }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.user_phone.label }}</td>
+                <td>{{ form.user_phone }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.user_vk_profile_url.label }}</td>
+                <td>{{ form.user_vk_profile_url }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><h4>Маршрут</h4><hr></td>
+            </tr>
+            <tr>
+                <td>{{ form.route_role.label }}</td>
+                <td>{{ form.route_role }}</td>
+            </tr>
+            <tr>
+                <td>С</td>
+                <td>
+                    {{ form.route_departure_date_from }}
+                    {{ form.route_departure_time_from }}
+                    <select id="time_range" onchange="bindTimeRange()" title="Время суток">
+                        <option value="none">Ничего</option>
+                        <option value="night">Ночь</option>
+                        <option value="morning">Утро</option>
+                        <option value="day">День</option>
+                        <option value="evening">Вечер</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>До</td>
+                <td>
+                    {{ form.route_departure_date_to }}
+                    {{ form.route_departure_time_to }}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.route_timezone.label }}</td>
+                <td>{{ form.route_timezone }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.route_cost.label }}</td>
+                <td>{{ form.route_cost }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.route_passengers_count.label }}</td>
+                <td>{{ form.route_passengers_count }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.route_comment.label }}</td>
+                <td>{{ form.route_comment }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><h4>Начальная точка</h4><hr></td>
+            </tr>
+            <tr>
+                <td>{{ form.start_place_country.label }}</td>
+                <td>
+                    {{ form.start_place_country }}
+                    <select id="sp_country_sel" onchange="bindAdrComponent('sp_country_sel', 'start_place', 'country')">
+                        <option value="">Ничего</option>
+                        <option value="Россия" selected>Россия</option>
+                        <option value="Белоруссия">Белоруссия</option>
+                        <option value="Казахстан">Казахстан</option>
+                        <option value="Украина">Украина</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.start_place_adm_area_level_1.label }}</td>
+                <td>
+                    {{ form.start_place_adm_area_level_1 }}
+                    <select id="sp_area_sel" onchange="bindAdrComponent('sp_area_sel', 'start_place', 'adm_area_level_1')">
+                        <option value="">Ничего</option>
+                        <option value="Архангельская область">Архангельская область</option>
+                        <option value="Карагандинская область">Карагандинская область</option>
+                        <option value="Красноярский край">Красноярский край</option>
+                        <option value="Новосибирская область">Новосибирская область</option>
+                        <option value="Омская область">Омская область</option>
+                        <option value="Татарстан">Татарстан</option>
+                        <option value="Тыва">Тыва</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.start_place_locality.label }}</td>
+                <td>
+                    {{ form.start_place_locality }}
+                    <select id="sp_locality_sel" onchange="bindAdrComponent('sp_locality_sel', 'start_place', 'locality')">
+                        <option value="">Ничего</option>
+                        <option value="Абакан">Абакан</option>
+                        <option value="Архангельск">Архангельск</option>
+                        <option value="Казань">Казань</option>
+                        <option value="Караганда">Караганда</option>
+                        <option value="Красноярск">Красноярск</option>
+                        <option value="Кызыл">Кызыл</option>
+                        <option value="Набережные Челны">Набережные Челны</option>
+                        <option value="Новосибирск">Новосибирск</option>
+                        <option value="Омск">Омск</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.start_place_street.label }}</td>
+                <td>{{ form.start_place_street }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.start_place_house.label }}</td>
+                <td>{{ form.start_place_house }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><h4>Конечная точка</h4><hr></td>
+            </tr>
+            <tr>
+                <td>{{ form.finish_place_country.label }}</td>
+                <td>
+                    {{ form.finish_place_country }}
+                    <select id="fp_country_sel" onchange="bindAdrComponent('fp_country_sel', 'finish_place', 'country')">
+                        <option value="">Ничего</option>
+                        <option value="Россия" selected>Россия</option>
+                        <option value="Белоруссия">Белоруссия</option>
+                        <option value="Казахстан">Казахстан</option>
+                        <option value="Украина">Украина</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.finish_place_adm_area_level_1.label }}</td>
+                <td>
+                    {{ form.finish_place_adm_area_level_1 }}
+                    <select id="fp_area_sel" onchange="bindAdrComponent('fp_area_sel', 'finish_place', 'adm_area_level_1')">
+                        <option value="">Ничего</option>
+                        <option value="Архангельская область">Архангельская область</option>
+                        <option value="Карагандинская область">Карагандинская область</option>
+                        <option value="Красноярский край">Красноярский край</option>
+                        <option value="Новосибирская область">Новосибирская область</option>
+                        <option value="Омская область">Омская область</option>
+                        <option value="Татарстан">Татарстан</option>
+                        <option value="Тыва">Тыва</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.finish_place_locality.label }}</td>
+                <td>
+                    {{ form.finish_place_locality }}
+                    <select id="fp_locality_sel" onchange="bindAdrComponent('fp_locality_sel', 'finish_place', 'locality')">
+                        <option value="">Ничего</option>
+                        <option value="Абакан">Абакан</option>
+                        <option value="Архангельск">Архангельск</option>
+                        <option value="Казань">Казань</option>
+                        <option value="Караганда">Караганда</option>
+                        <option value="Красноярск">Красноярск</option>
+                        <option value="Кызыл">Кызыл</option>
+                        <option value="Набережные Челны">Набережные Челны</option>
+                        <option value="Новосибирск">Новосибирск</option>
+                        <option value="Омск">Омск</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.finish_place_street.label }}</td>
+                <td>{{ form.finish_place_street }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.finish_place_house.label }}</td>
+                <td>{{ form.finish_place_house }}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input id="submit-button" class="btn btn-primary" type="submit" value="Создать"></td>
+            </tr>
+        </table>
+    </form>
+{% endblock content %}
+
+{% block footer-wrapper %}{% endblock %}

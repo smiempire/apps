@@ -1,0 +1,15 @@
+{% extends 'authentication/form.html' %}
+
+{% block title %}Слишком много попыток{% endblock %}
+{% block content %}
+    <div class="alert alert-error">
+        Похоже, мы не можем доставить вам SMS с кодом подтверждения.
+    </div>
+    <p>
+        Попробуйте <a href="{% url signup %}">зарегистрироваться ещё раз</a>
+        или
+        <a href="mailto:dev@innovationsoft.ru?subject=Transmission Platform signup verifier delivery problem&body=Здравсвуйте. Я не могу получить SMS сообщение с кодом подтверждения регистрации. Номер моего телефона: ">
+            напишите нам письмо
+        </a> и мы обязательно разберёмся в чём дело.
+    </p>
+{% endblock %}

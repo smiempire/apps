@@ -1,0 +1,15 @@
+{% extends 'authentication/form.html' %}
+
+{% block title %}Слишком много попыток авторизации{% endblock %}
+{% block content %}
+    <div class="alert alert-error">
+        Вы привысили лимит неудачных попыток авторизации. Пожалуйста повториту попытку через 60 минут.
+    </div>
+    <p>
+        Так же вы можете попробовать <a href="{% url signin %}">авторизоваться другим способом</a>
+        или
+        <a href="mailto:dev@innovationsoft.ru?subject=Transmission Platform temporrary password delivery problem&body=Здравсвуйте. Я не могу получить SMS сообщение с временным паролем. Номер моего телефона: ">
+            напишите нам письмо
+        </a> и мы обязательно разберёмся в чём дело.
+    </p>
+{% endblock %}

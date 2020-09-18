@@ -1,0 +1,13 @@
+{% extends 'authentication/form.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+    {% crispy form %}
+    <p>
+        Если SMS с кодом подтверждения долго не приходит, то <a href="../verifier/?{% include 'authentication/query_string.html' %}">попробуйте повторить запрос</a>.
+    </p>
+    <p>
+        А если вы уже зарегистрированы, то можете <a href="{% url signin %}?{% include 'authentication/query_string.html' %}">войти</a>.
+    </p>
+{% endblock %}
